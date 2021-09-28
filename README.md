@@ -25,7 +25,7 @@ The [`stored_parameter_files/`](./stored_parameter_files) directory stores conta
 ## Install ##
 
 ```sh
-$ curl -o ticker.sh https://raw.githubusercontent.com/cmutnik/ticker.sh/master/scripts/ticker.sh
+curl -o ticker.sh https://raw.githubusercontent.com/cmutnik/ticker.sh/master/scripts/ticker.sh
 ```
 
 > In-order to run [`ticker.sh`](./scripts/ticker.sh), you must first install [jq](https://stedolan.github.io/jq/), a versatile command-line JSON processor.  On this system, `jq-osx-amd64` was tested and shown to work.
@@ -56,28 +56,28 @@ $ curl -o ticker.sh https://raw.githubusercontent.com/cmutnik/ticker.sh/master/s
 
 ```sh
 # Single symbol:
-$ ./scripts/ticker.sh AAPL
+./scripts/ticker.sh AAPL
 
 # Multiple symbols:
-$ ./scripts/ticker.sh AAPL MSFT GOOG BTC-USD
+./scripts/ticker.sh AAPL MSFT GOOG BTC-USD
 
 # Read from file:
-$ echo "AAPL MSFT GOOG BTC-USD" > ~/.ticker.conf
-$ ./scripts/ticker.sh $(cat ~/.ticker.conf)
+echo "AAPL MSFT GOOG BTC-USD" > ~/.ticker.conf
+./scripts/ticker.sh $(cat ~/.ticker.conf)
 
 # Use different colors:
-$ COLOR_BOLD="\e[38;5;248m" \
+COLOR_BOLD="\e[38;5;248m" \
   COLOR_GREEN="\e[38;5;154m" \
   COLOR_RED="\e[38;5;202m" \
   ./scripts/ticker.sh AAPL
 
 # Disable colors:
-$ NO_COLOR=1 ./scripts/ticker.sh AAPL
+NO_COLOR=1 ./scripts/ticker.sh AAPL
 
 # Update every five seconds:
-$ watch -n 5 -t -c ./scripts/ticker.sh AAPL MSFT GOOG BTC-USD
+watch -n 5 -t -c ./scripts/ticker.sh AAPL MSFT GOOG BTC-USD
 # Or if `watch` is not available:
-$ while true; do clear; ./scripts/ticker.sh AAPL MSFT GOOG BTC-USD; sleep 5; done
+while true; do clear; ./scripts/ticker.sh AAPL MSFT GOOG BTC-USD; sleep 5; done
 ```
 
 This script works well with [GeekTool](https://www.tynsoe.org/v2/geektool/) and similar software:
