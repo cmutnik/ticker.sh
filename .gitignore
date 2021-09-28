@@ -1,1 +1,7 @@
+.DS_Store
+*/.DS_Store
+jq
 jq-osx-amd64
+unused_ideas/
+installing_for_non_tech_friends/
+./scripts/Run_current_splitfiles.sh

@@ -2,9 +2,23 @@
 
 > Real-time stock tickers from the command-line.
 
-[`ticker.sh`](./ticker.sh) is a simple shell script using the Yahoo Finance API as a data source. It features colored output and is able to display pre- and post-market prices.
+[`ticker.sh`](./scripts/ticker.sh) is a simple shell script using the Yahoo Finance API as a data source. It features colored output and is able to display pre- and post-market prices.
 
-![ticker.sh](https://raw.githubusercontent.com/pstadler/ticker.sh/master/screenshot.png)
+![ticker.sh](https://raw.githubusercontent.com/cmutnik/ticker.sh/master/figs/screenshot.png)
+
+```
+.
+├── scripts
+│   ├── 00_run_ticker.sh
+│   ├── 01_run_ticker_using_input_files.sh
+│   └── ticker.sh
+└── stored_parameter_files
+    ├── set_stock_symbols.txt
+    └── set_timer_interval.txt
+```
+The [`scripts/`](./scripts) directory stores all shell scripts needed to execute this ticker.
+
+The [`stored_parameter_files/`](./stored_parameter_files) directory stores contains `*.txt` files that can be used to store default values.
 
 ----
 ----
@@ -14,44 +28,56 @@
 $ curl -o ticker.sh https://raw.githubusercontent.com/pstadler/ticker.sh/master/ticker.sh
 ```
 
-> In-order to run [`ticker.sh`](./ticker.sh), you must first install [jq](https://stedolan.github.io/jq/), a versatile command-line JSON processor.   `jq-osx-amd64` was tested and shown to work on this system.
+> In-order to run [`ticker.sh`](./scripts/ticker.sh), you must first install [jq](https://stedolan.github.io/jq/), a versatile command-line JSON processor.  On this system, `jq-osx-amd64` was tested and shown to work.
 
 ----
 ----
 ## Usage ##
 
 ----
-### Using Script ###
+### Using Scripts ###
 
-Calling [`00_runticker.sh`](./00_runticker.sh), to execute the ticker for specified symbols.
+> Calling [`00_run_ticker.sh`](./scripts/00_run_ticker.sh), will execute the ticker for symbols designated inside the script.  This has the lowest barrier of entry:
+```sh
+./scripts/00_run_ticker.sh
+```
+
+> Calling [`01_run_ticker_using_input_files.sh`](./scripts/01_run_ticker_using_input_files.sh) allows default symbols and refresh intervals to be stored in external files and overwritten when passed in as command line arguments.  This script also prints the date and time upon each refresh.
+```sh
+# Using the parameters stored in txt files
+./scripts/01_run_ticker_using_input_files.sh
+
+# Using command-line inputs
+./scripts/01_run_ticker_using_input_files.sh interval=10 symbols=AAPL
+```
 
 ----
 ### General Methodology ###
 
 ```sh
 # Single symbol:
-$ ./ticker.sh AAPL
+$ ./scripts/ticker.sh AAPL
 
 # Multiple symbols:
-$ ./ticker.sh AAPL MSFT GOOG BTC-USD
+$ ./scripts/ticker.sh AAPL MSFT GOOG BTC-USD
 
 # Read from file:
 $ echo "AAPL MSFT GOOG BTC-USD" > ~/.ticker.conf
-$ ./ticker.sh $(cat ~/.ticker.conf)
+$ ./scripts/ticker.sh $(cat ~/.ticker.conf)
 
 # Use different colors:
 $ COLOR_BOLD="\e[38;5;248m" \
   COLOR_GREEN="\e[38;5;154m" \
   COLOR_RED="\e[38;5;202m" \
-  ./ticker.sh AAPL
+  ./scripts/ticker.sh AAPL
 
 # Disable colors:
-$ NO_COLOR=1 ./ticker.sh AAPL
+$ NO_COLOR=1 ./scripts/ticker.sh AAPL
 
 # Update every five seconds:
-$ watch -n 5 -t -c ./ticker.sh AAPL MSFT GOOG BTC-USD
+$ watch -n 5 -t -c ./scripts/ticker.sh AAPL MSFT GOOG BTC-USD
 # Or if `watch` is not available:
-$ while true; do clear; ./ticker.sh AAPL MSFT GOOG BTC-USD; sleep 5; done
+$ while true; do clear; ./scripts/ticker.sh AAPL MSFT GOOG BTC-USD; sleep 5; done
 ```
 
 This script works well with [GeekTool](https://www.tynsoe.org/v2/geektool/) and similar software:
