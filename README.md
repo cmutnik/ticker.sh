@@ -1,20 +1,28 @@
-# ticker.sh
+# In Terminal Stock Ticker #
 
 > Real-time stock tickers from the command-line.
 
-`ticker.sh` is a simple shell script using the Yahoo Finance API as a data source. It features colored output and is able to display pre- and post-market prices (denoted with `*`).
+[`ticker.sh`](./ticker.sh) is a simple shell script using the Yahoo Finance API as a data source. It features colored output and is able to display pre- and post-market prices.
 
 ![ticker.sh](https://raw.githubusercontent.com/pstadler/ticker.sh/master/screenshot.png)
 
-## Install
+----
+----
+## Install ##
 
 ```sh
 $ curl -o ticker.sh https://raw.githubusercontent.com/pstadler/ticker.sh/master/ticker.sh
 ```
 
-Make sure to install [jq](https://stedolan.github.io/jq/), a versatile command-line JSON processor.
+> In-order to run [`ticker.sh`](./ticker.sh), you must first install [jq](https://stedolan.github.io/jq/), a versatile command-line JSON processor.   `jq-osx-amd64` was tested and shown to work on this system.
 
-## Usage
+----
+----
+## Usage ##
+
+Calling [`00_runticker.sh`](./00_runticker.sh), to execute the ticker for specified symbols.
+
+----
 
 ```sh
 # Single symbol:
@@ -42,7 +50,7 @@ $ watch -n 5 -t -c ./ticker.sh AAPL MSFT GOOG BTC-USD
 $ while true; do clear; ./ticker.sh AAPL MSFT GOOG BTC-USD; sleep 5; done
 ```
 
-This script works well with [GeekTool](https://www.tynsoe.org/geektool/) and similar software:
+This script works well with [GeekTool](https://www.tynsoe.org/v2/geektool/) and similar software:
 
 ```sh
 PATH=/usr/local/bin:$PATH # make sure to include the path where jq is located
