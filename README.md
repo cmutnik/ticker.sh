@@ -4,7 +4,7 @@
 
 [`ticker.sh`](./scripts/ticker.sh) is a simple shell script using the Yahoo Finance API as a data source. It features colored output and is able to display pre- and post-market prices.
 
-![ticker.sh](https://raw.githubusercontent.com/pstadler/ticker.sh/master/screenshot.png)
+![ticker.sh](https://raw.githubusercontent.com/cmutnik/ticker.sh/master/screenshot.png)
 
 ```
 .
@@ -42,7 +42,7 @@ $ curl -o ticker.sh https://raw.githubusercontent.com/pstadler/ticker.sh/master/
 ./scripts/00_run_ticker.sh
 ```
 
-> Calling [`01_run_ticker_using_input_files.sh`](./scripts/01_run_ticker_using_input_files.sh) allows symbols and refresh intervals to be stored in external files and passed in as command line args.
+> Calling [`01_run_ticker_using_input_files.sh`](./scripts/01_run_ticker_using_input_files.sh) allows default symbols and refresh intervals to be stored in external files and overwritten when passed in as command line arguments.  This script also prints the date and time upon each refresh.
 ```sh
 # Using the parameters stored in txt files
 ./scripts/01_run_ticker_using_input_files.sh
