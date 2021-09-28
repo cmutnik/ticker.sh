@@ -1,3 +1,5 @@
 jq
 jq-osx-amd64
-./unused_ideas/
+unused_ideas/
+.DS_Store
+*/.DS_Store
