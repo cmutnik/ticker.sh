@@ -1,0 +1,1 @@
+while true; do clear; ./ticker.sh GNUS TTNP KTOV LLIT CYRX THNQ USO; sleep 2; done
