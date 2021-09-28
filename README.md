@@ -25,7 +25,7 @@ The [`stored_parameter_files/`](./stored_parameter_files) directory stores conta
 ## Install ##
 
 ```sh
-$ curl -o ticker.sh https://raw.githubusercontent.com/pstadler/ticker.sh/master/ticker.sh
+$ curl -o ticker.sh https://raw.githubusercontent.com/cmutnik/ticker.sh/master/scripts/ticker.sh
 ```
 
 > In-order to run [`ticker.sh`](./scripts/ticker.sh), you must first install [jq](https://stedolan.github.io/jq/), a versatile command-line JSON processor.  On this system, `jq-osx-amd64` was tested and shown to work.
