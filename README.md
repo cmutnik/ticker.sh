@@ -20,9 +20,13 @@ $ curl -o ticker.sh https://raw.githubusercontent.com/pstadler/ticker.sh/master/
 ----
 ## Usage ##
 
+----
+### Using Script ###
+
 Calling [`00_runticker.sh`](./00_runticker.sh), to execute the ticker for specified symbols.
 
 ----
+### General Methodology ###
 
 ```sh
 # Single symbol:
